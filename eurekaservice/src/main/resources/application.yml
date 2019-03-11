@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: eureka-service
+server:
+  port: 8300
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    enable-self-preservation: false
+
+zuul:
+  prefix: /api
+  routes:
+    db-service:
+      path: /db-service/**
+      url: http://localhost:8301
+    user-service:
+      path: /users-service/**
+      url: http://localhost:8302/
