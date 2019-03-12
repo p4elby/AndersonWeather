@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/dbservice/db-service.iml" filepath="$PROJECT_DIR$/dbservice/db-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/eurekaservice/eureka-service.iml" filepath="$PROJECT_DIR$/eurekaservice/eureka-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/random-data/random-data.iml" filepath="$PROJECT_DIR$/random-data/random-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sortData/sortData.iml" filepath="$PROJECT_DIR$/sortData/sortData.iml" />
       <module fileurl="file://$PROJECT_DIR$/users-service/users-service.iml" filepath="$PROJECT_DIR$/users-service/users-service.iml" />
     </modules>
   </component>

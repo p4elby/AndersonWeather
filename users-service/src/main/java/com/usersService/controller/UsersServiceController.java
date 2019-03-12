@@ -9,9 +9,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,13 +19,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UsersServiceController {
-    @Autowired
-    RestTemplate restTemplate = new RestTemplate();
-
-    @RequestMapping("hello")
-    private String hello(){
-        return "hello";
-    }
 
     @GetMapping("/users")
     public String getUsers(){
@@ -49,7 +40,7 @@ public class UsersServiceController {
     }
     @PostMapping("/users")
     public String addUser(@RequestBody String userData){
-        String url = "http://localhost:8300/api/db-service/db/users";
+        String url = "http://localhost:8300/api/db-service/db/users/site";
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
         StringBuilder result = new StringBuilder();

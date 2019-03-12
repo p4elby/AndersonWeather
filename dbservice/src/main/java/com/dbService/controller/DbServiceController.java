@@ -37,7 +37,12 @@ public class DbServiceController {
         return userRepository.findAll();
     }
 
-    @PostMapping("/users")
+
+    @PostMapping("/users/db")
+    private User newUSer(@RequestBody User newUser){
+        return userRepository.save(newUser);
+    }
+    @PostMapping("/users/site")
     private User newUser (@RequestBody String data){
         System.out.println(data);
         String[] dataUser = data.split("=");

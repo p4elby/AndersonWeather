@@ -8,12 +8,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="db-service" />
         <module name="eureka-service" />
+        <module name="random-data" />
+        <module name="sortData" />
         <module name="users-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="db-service" target="1.8" />
       <module name="eureka-service" target="1.8" />
+      <module name="random-data" target="1.8" />
+      <module name="sortData" target="1.8" />
       <module name="users-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -21,6 +25,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="db-service" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
+      <module name="random-data" options="-parameters" />
       <module name="users-service" options="" />
     </option>
   </component>

@@ -23,3 +23,6 @@ zuul:
     user-service:
       path: /users-service/**
       url: http://localhost:8302/
+    random-data:
+      path: /random-data/**
+      url: http://localhost:8304/

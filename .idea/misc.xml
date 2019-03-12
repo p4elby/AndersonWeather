@@ -6,6 +6,8 @@
         <option value="$PROJECT_DIR$/dbservice/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaservice/pom.xml" />
         <option value="$PROJECT_DIR$/users-service/pom.xml" />
+        <option value="$PROJECT_DIR$/sortData/pom.xml" />
+        <option value="$PROJECT_DIR$/random-data/pom.xml" />
       </list>
     </option>
   </component>
