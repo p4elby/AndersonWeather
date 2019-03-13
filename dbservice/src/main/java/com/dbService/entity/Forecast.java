@@ -22,6 +22,17 @@ public class Forecast {
     public Forecast() {
     }
 
+    public Forecast(String forecast_city, String forecast_visibility, String forecast_wind, int forecast_temperature, int forecast_humidity, int forecast_pressure, int forecast_precipitation, Date forecast_date) {
+        this.forecast_city = forecast_city;
+        this.forecast_visibility = forecast_visibility;
+        this.forecast_wind = forecast_wind;
+        this.forecast_temperature = forecast_temperature;
+        this.forecast_humidity = forecast_humidity;
+        this.forecast_pressure = forecast_pressure;
+        this.forecast_precipitation = forecast_precipitation;
+        this.forecast_date = forecast_date;
+    }
+
     public int getId() {
         return idForecast;
     }

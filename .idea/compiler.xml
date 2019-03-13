@@ -9,7 +9,6 @@
         <module name="db-service" />
         <module name="eureka-service" />
         <module name="random-data" />
-        <module name="sortData" />
         <module name="users-service" />
       </profile>
     </annotationProcessing>

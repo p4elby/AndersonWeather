@@ -45,7 +45,6 @@ public class UsersServiceController {
         HttpPost post = new HttpPost(url);
         StringBuilder result = new StringBuilder();
         try {
-
             List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
             JSONObject data = new JSONObject(userData);
             String name = data.getString("user_name");

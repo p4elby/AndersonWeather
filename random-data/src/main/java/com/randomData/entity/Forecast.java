@@ -107,9 +107,9 @@ public class Forecast {
 
     @Override
     public String toString() {
-        return  "  city='"+forecast_city+
-                ", visibility='" + forecast_visibility +
-                ", wind='" + forecast_wind +
+        return  "  city="+forecast_city+
+                ", visibility=" + forecast_visibility +
+                ", wind=" + forecast_wind +
                 ", temp=" + forecast_temperature +
                 ", humidity=" + forecast_humidity +
                 ", presuure=" + forecast_pressure +
