@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/analyze-data-service/analyze-data-service.iml" filepath="$PROJECT_DIR$/analyze-data-service/analyze-data-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-site/client-site.iml" filepath="$PROJECT_DIR$/client-site/client-site.iml" />
       <module fileurl="file://$PROJECT_DIR$/db-service/db-service.iml" filepath="$PROJECT_DIR$/db-service/db-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/eureka-service/eureka-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/random-data-service/random-data-service.iml" filepath="$PROJECT_DIR$/random-data-service/random-data-service.iml" />
