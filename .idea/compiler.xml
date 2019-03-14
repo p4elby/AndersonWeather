@@ -6,25 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="analyze-data-service" />
         <module name="db-service" />
         <module name="eureka-service" />
-        <module name="random-data" />
+        <module name="random-data-service" />
         <module name="users-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="analyze-data-service" target="1.8" />
       <module name="db-service" target="1.8" />
       <module name="eureka-service" target="1.8" />
-      <module name="random-data" target="1.8" />
+      <module name="random-data-service" target="1.8" />
       <module name="sortData" target="1.8" />
       <module name="users-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="analyze-data-service" options="-parameters" />
       <module name="db-service" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
-      <module name="random-data" options="-parameters" />
+      <module name="random-data-service" options="-parameters" />
       <module name="users-service" options="" />
     </option>
   </component>

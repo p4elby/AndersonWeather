@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dbservice/db-service.iml" filepath="$PROJECT_DIR$/dbservice/db-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eurekaservice/eureka-service.iml" filepath="$PROJECT_DIR$/eurekaservice/eureka-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/random-data/random-data.iml" filepath="$PROJECT_DIR$/random-data/random-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/analyze-data-service/analyze-data-service.iml" filepath="$PROJECT_DIR$/analyze-data-service/analyze-data-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/db-service/db-service.iml" filepath="$PROJECT_DIR$/db-service/db-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/eureka-service/eureka-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/random-data-service/random-data-service.iml" filepath="$PROJECT_DIR$/random-data-service/random-data-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/users-service/users-service.iml" filepath="$PROJECT_DIR$/users-service/users-service.iml" />
     </modules>
   </component>
