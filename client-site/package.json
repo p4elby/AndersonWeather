@@ -5,7 +5,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "deep-extend": "^0.5.1",
     "moment": "^2.24.0",
+    "popup": "0.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
@@ -15,8 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "stop": "pkill --signal SIGINT myApp"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

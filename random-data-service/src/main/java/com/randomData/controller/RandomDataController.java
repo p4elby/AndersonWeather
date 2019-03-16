@@ -1,30 +1,20 @@
 package com.randomData.controller;
 
-import com.randomData.entity.Forecast;
 import com.randomData.enums.Visibility;
 import com.randomData.enums.Wind;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.apache.http.client.methods.HttpPost;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -33,6 +23,7 @@ import java.util.Random;
 public class RandomDataController {
     @PostMapping("/generate")
     public String randomForecast(@RequestBody String data){
+        System.out.println(data);
         Visibility[] allVis = Visibility.values();
         Wind[] allWind = Wind.values();
         Random random = new Random();
@@ -40,15 +31,10 @@ public class RandomDataController {
         int pickVis =  random.nextInt(allVis.length);
         String visibility = allVis[pickVis].getVis();
         String wind = allWind[pickWind].getWind();
-        System.out.println("Vis: "+ visibility);
-        System.out.println("Wind: "+ wind);
         int temperature = random.nextInt(30) - random.nextInt(30);
         int humidity = random.nextInt(100);
         int pressure = random.nextInt(1000) ;
         int precipitation =random.nextInt(100);
-//        Date date = new Date();
-//        DateFormat df = new SimpleDateFormat("yyyy/dd/MM");
-//        String dateStr = df.format(date);
         String url = "http://localhost:8300/api/db-service/db/forecast/site";
         StringBuilder result = new StringBuilder();
         HttpClient client = HttpClientBuilder.create().build();
@@ -78,6 +64,10 @@ public class RandomDataController {
             System.out.println(e);
         }
         return result.toString();
+    }
+    @PostMapping("/hello")
+    public String hello(@RequestBody String data){
+        return data;
     }
 
 }

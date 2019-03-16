@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
      <div>
-        {/*<div><Search/></div>*/}
+        <div><Search/></div>
         <div><GenerateForecast/></div>
      </div>
 
