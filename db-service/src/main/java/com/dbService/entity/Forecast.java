@@ -112,7 +112,7 @@ public class Forecast {
                 ", wind='" + forecast_wind +
                 ", temp=" + forecast_temperature +
                 ", humidity=" + forecast_humidity +
-                ", presuure=" + forecast_pressure +
+                ", pressure=" + forecast_pressure +
                 ", precipitation=" + forecast_precipitation +
                 ", date=" + forecast_date;
     }

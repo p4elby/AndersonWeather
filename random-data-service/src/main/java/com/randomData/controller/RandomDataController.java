@@ -32,7 +32,7 @@ import java.util.Random;
 @RequestMapping("/random")
 public class RandomDataController {
     @PostMapping("/generate")
-    public String randomForecast(@RequestBody String nameCity){
+    public String randomForecast(@RequestBody String data){
         Visibility[] allVis = Visibility.values();
         Wind[] allWind = Wind.values();
         Random random = new Random();
@@ -46,16 +46,17 @@ public class RandomDataController {
         int humidity = random.nextInt(100);
         int pressure = random.nextInt(1000) ;
         int precipitation =random.nextInt(100);
-        Date date = new Date();
-        DateFormat df = new SimpleDateFormat("yyyy/dd/MM");
-        String dateStr = df.format(date);
+//        Date date = new Date();
+//        DateFormat df = new SimpleDateFormat("yyyy/dd/MM");
+//        String dateStr = df.format(date);
         String url = "http://localhost:8300/api/db-service/db/forecast/site";
         StringBuilder result = new StringBuilder();
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
         try {
-            JSONObject cityJson = new JSONObject(nameCity);
-            String city =cityJson.getString("city");
+            JSONObject jsonObject = new JSONObject(data);
+            String city =jsonObject.getString("city");
+            String date = jsonObject.getString("date");
             List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
             urlParameters.add(new BasicNameValuePair("city",city));
             urlParameters.add(new BasicNameValuePair("visibility",visibility));
@@ -64,7 +65,7 @@ public class RandomDataController {
             urlParameters.add(new BasicNameValuePair("humidity",Integer.toString(humidity)));
             urlParameters.add(new BasicNameValuePair("pressure",Integer.toString(pressure)));
             urlParameters.add(new BasicNameValuePair("precipitation",Integer.toString(precipitation)));
-            urlParameters.add(new BasicNameValuePair("date",dateStr));
+            urlParameters.add(new BasicNameValuePair("date",date));
             System.out.println(urlParameters);
             post.setEntity(new UrlEncodedFormEntity(urlParameters));
             HttpResponse response = client.execute(post);
