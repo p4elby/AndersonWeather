@@ -10,7 +10,6 @@
         <module name="db-service" />
         <module name="eureka-service" />
         <module name="random-data-service" />
-        <module name="users-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

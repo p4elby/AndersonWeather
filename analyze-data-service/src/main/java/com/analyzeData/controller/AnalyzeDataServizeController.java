@@ -16,13 +16,13 @@ public class AnalyzeDataServizeController {
             int precipitation = Integer.parseInt(forecast.getString("precipitation"));
             String wind = forecast.getString("wind");
             if (temperature < -5){
-                result += "winter clothes";
+                result += "Winter clothes";
             } else if (temperature < 10) {
-                result += "windbreaker with a sweatshirt";
+                result += "Windbreaker with a sweatshirt";
             } else if(temperature < 20){
-                result += "windbreaker";
+                result += "Windbreaker";
             }else
-                result += "shorts with a t-shirt";
+                result += "Shorts with a t-shirt";
 
             if (precipitation < 20){
                 result += ",the probability of rain is small! so you should can not take an umbrella";

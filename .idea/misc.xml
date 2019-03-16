@@ -8,7 +8,6 @@
       <list>
         <option value="$PROJECT_DIR$/dbservice/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaservice/pom.xml" />
-        <option value="$PROJECT_DIR$/users-service/pom.xml" />
         <option value="$PROJECT_DIR$/random-data/pom.xml" />
         <option value="$PROJECT_DIR$/analyze-data-service/pom.xml" />
         <option value="$PROJECT_DIR$/db-service/pom.xml" />

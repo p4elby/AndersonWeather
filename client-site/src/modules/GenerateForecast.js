@@ -35,7 +35,7 @@ export default class GenerateForecast extends React.Component{
                 console.log(date);
                 axios.post('http://localhost:8300/api/random-data/random/generate', {city: city, date: date}).then(res=>{
                     alert("Data Add");
-                    console.log(res);
+                    console.log(res.data);
                 })
             }
         }
