@@ -38,6 +38,7 @@ public class DbServiceController {
     public Forecast newForecasts(@RequestBody String data){
         System.out.println(data);
         String[] splitData = data.split("&");
+        System.out.println(splitData[7]);
         splitData[7] = splitData[7].replace("%2F","/");
         String city = splitData[0].split("=")[1];
         String visibility = splitData[1].split("=")[1];
@@ -48,12 +49,11 @@ public class DbServiceController {
         int precipitation = Integer.parseInt(splitData[6].split("=")[1]);
         Date date = new Date();
         try {
-            date =  new SimpleDateFormat("yyyy/dd/MM").parse(splitData[7].split("=")[1]);
+            date =  new SimpleDateFormat("yyyy-MM-dd").parse(splitData[7].split("=")[1]);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         Forecast forecast = new Forecast(city, visibility, wind, temperature, humidity, pressure, precipitation, date);
-        System.out.println(forecast.toString());
         return forecastRepository.save(forecast);
     }
     @GetMapping("/users")

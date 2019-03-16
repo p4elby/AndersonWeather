@@ -50,7 +50,7 @@ export default class GenerateForecast extends React.Component{
                                autoComplete = "off"
                                onChange = {this.onCityChange}/>
                     </label>
-                    <label><span> Date : </span>
+                    <label style={{marginLeft: '2%'}}><span> Date : </span>
                         <input type = "date"
                                className = "form-control"
                                autoComplete = "off"

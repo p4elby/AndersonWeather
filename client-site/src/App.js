@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-
 import './App.css';
-import Search from './modules/Search'
+import SearchAndAnalyze from './modules/SearchAndAnalyze'
 import GenerateForecast from './modules/GenerateForecast'
 class App extends Component {
   render() {
     return (
-     <div>
-        <div><Search/></div>
-        <div><GenerateForecast/></div>
+     <div className ="container">
+         <div className="row">
+             <div className="col-sm">
+                 <label>Search </label><SearchAndAnalyze/>
+             </div>
+             <div className="col-sm">
+                 <label>Generate Data </label><GenerateForecast/>
+             </div>
+         </div>
      </div>
-
     );
   }
 }
