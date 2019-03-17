@@ -10,4 +10,4 @@ eureka:
   instance:
     hostname: localhost
 server:
-  port: 8304
+  port: 8302

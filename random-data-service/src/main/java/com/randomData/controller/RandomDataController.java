@@ -35,14 +35,14 @@ public class RandomDataController {
         int pressure = random.nextInt(1000) ;
         int precipitation =random.nextInt(100);
         String url = "http://localhost:8300/api/db-service/db/forecast/site";
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
         try {
             JSONObject jsonObject = new JSONObject(data);
             String city =jsonObject.getString("city");
             String date = jsonObject.getString("date");
-            List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+            List<NameValuePair> urlParameters = new ArrayList<>();
             urlParameters.add(new BasicNameValuePair("city",city));
             urlParameters.add(new BasicNameValuePair("visibility",visibility));
             urlParameters.add(new BasicNameValuePair("wind",wind));
@@ -57,10 +57,9 @@ public class RandomDataController {
             String line;
             while ((line = rd.readLine()) != null) {
                 result.append(line);
-                System.out.println("line"+ line);
             }
         }catch (Exception e){
-            System.out.println(e);
+           e.printStackTrace();
         }
         return result.toString();
     }

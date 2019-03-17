@@ -11,8 +11,8 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
   server:
-    waitTimeInMsWhenSyncEmpty: 0
-    enable-self-preservation: false
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 1000
 
 zuul:
   prefix: /api
@@ -20,12 +20,9 @@ zuul:
     db-service:
       path: /db-service/**
       url: http://localhost:8301
-    user-service:
-      path: /users-service/**
+    random-data:
+      path: /random-data/**
       url: http://localhost:8302/
     analyze-data:
       path: /analyze-data/**
       url: http://localhost:8303/
-    random-data:
-      path: /random-data/**
-      url: http://localhost:8304/

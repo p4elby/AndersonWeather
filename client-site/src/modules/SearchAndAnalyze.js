@@ -44,17 +44,16 @@ export default class SearchAndAnalyze extends React.Component{
     onChangeDate = event =>{
         this.setState({date: moment(event.target.value).format('LL'), check : "start"});
     };
-    checkCity = event =>{
+    checkCity = () =>{
         this.setState({check: "notFound"});
         this.state.forecast.map((field) =>{
-                if (field.forecast_city === this.state.cityName && moment(field.date).format('LL') === this.state.date){
+                if ((field.forecast_city).toLowerCase() === (this.state.cityName).toLowerCase().trim() && moment(field.date).format('LL') === this.state.date){
                     this.setState({check: "show", visibility: field.visibility, pressure: field.presuure,
-                        humidity: field.humidity, wind: field.wind, temp: field.temp, precipitation: field.precipitation, analyzeData: ""});
+                        humidity: field.humidity, wind: field.wind, temp: field.temp, precipitation: field.precipitation, analyzeData: "", cityName: field.forecast_city});
                     this.getAnalyze();
                     return 1;
                 }else return 0;
-        }
-        );
+        });
     };
     showForecast =()=>{
         if (this.state.check === "show")
@@ -107,7 +106,7 @@ export default class SearchAndAnalyze extends React.Component{
                            autoComplete = "off"
                            onChange = {this.onChangeDate}/>
                 </label>
-                <button className = "btn btn-primary" onClick={this.checkCity} style={{marginLeft: '1%'}}>Search</button>
+                <button disabled={!this.state.date || !this.state.cityName} className = "btn btn-primary" onClick={this.checkCity} style={{marginLeft: '1%', marginBottom: '1%'}}>Search</button>
                 {this.showForecast()}
                 {this.forecastNotFound()}
             </div>

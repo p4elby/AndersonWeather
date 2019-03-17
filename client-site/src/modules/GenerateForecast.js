@@ -28,26 +28,15 @@ export default class GenerateForecast extends React.Component{
     onSubmit = event =>{
         event.preventDefault();
         let date = this.state.date;
-        let city = this.state.city;
-        if (city === ""){
-            return(
-                alert("City is Null!"))
-        } else {
-            if (date === ""){
-                return(
-                    alert("Date is Null!")
-                )
-            } else {
-                axios.post('http://localhost:8300/api/random-data/random/generate', {city: city, date: date}).then(res=>{
-                    if (res.data === 'No'){
-                        alert("Forecast with such parameters already exists")
-                    }else {
-                        alert("Data Add");
-                        this.getForecast();
-                    }
-                })
+        let city = this.state.city.trim();
+        axios.post('http://localhost:8300/api/random-data/random/generate', {city: city, date: date}).then(res=>{
+            if (res.data === 'No'){
+                alert("Forecast with such parameters already exists")
+            }else {
+                alert("Data Add");
+                this.getForecast();
             }
-        }
+        })
     };
     render() {
         return(
@@ -65,7 +54,7 @@ export default class GenerateForecast extends React.Component{
                                autoComplete = "off"
                                onChange = {this.onDateChange}/>
                     </label>
-                    <button className = "btn btn-primary" style = {{marginLeft: '1%'}} onClick = {this.onSubmit}>
+                    <button disabled={!this.state.city || !this.state.date} className = "btn btn-primary" style = {{marginLeft: '1%', marginBottom: '1%'}} onClick = {this.onSubmit}>
                         Generate
                     </button>
                 </div>
