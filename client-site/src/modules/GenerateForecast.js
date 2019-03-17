@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
-
 export default class GenerateForecast extends React.Component{
     state = {
         forecast :[],
@@ -15,13 +14,21 @@ export default class GenerateForecast extends React.Component{
         this.setState({date: event.target.value});
         console.log(this.state.date)
     };
+    getForecast = () =>{
+        axios.get('http://localhost:8300/api/db-service/db/forecast')
+            .then(res =>{
+                let forecast = res.data;
+                this.setState({forecast})
+            });
+    };
+    componentDidMount() {
+        this.getForecast();
+    }
 
     onSubmit = event =>{
         event.preventDefault();
         let date = this.state.date;
         let city = this.state.city;
-
-        console.log(moment(date).format('LL'));
         if (city === ""){
             return(
                 alert("City is Null!"))
@@ -31,11 +38,13 @@ export default class GenerateForecast extends React.Component{
                     alert("Date is Null!")
                 )
             } else {
-                console.log(city);
-                console.log(date);
                 axios.post('http://localhost:8300/api/random-data/random/generate', {city: city, date: date}).then(res=>{
-                    alert("Data Add");
-                    console.log(res.data);
+                    if (res.data === 'No'){
+                        alert("Forecast with such parameters already exists")
+                    }else {
+                        alert("Data Add");
+                        this.getForecast();
+                    }
                 })
             }
         }
@@ -59,6 +68,26 @@ export default class GenerateForecast extends React.Component{
                     <button className = "btn btn-primary" style = {{marginLeft: '1%'}} onClick = {this.onSubmit}>
                         Generate
                     </button>
+                </div>
+                <div style={{marginTop: '3%',display:'block', overflow: 'auto',height: '500px'}}>
+                    {this.state.forecast.map((field,index)=>
+                        <table key={index} >
+                            <thead>
+                            <tr>
+                                <th>{field.forecast_city}</th>
+                                <th>{moment(field.date).format('LL')}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><span>Visibility : </span>{field.visibility}</td></tr>
+                                <tr><td><span>Wind : </span>{field.wind}</td></tr>
+                                <tr><td><span>Temp : </span>{field.temp}</td></tr>
+                                <tr><td><span>Humidity : </span>{field.humidity}</td></tr>
+                                <tr><td><span>Pressure : </span>{field.pressure}</td></tr>
+                                <tr><td><span>Precipitation : </span>{field.precipitation}</td></tr>
+                            </tbody>
+                        </table>
+                    )}
                 </div>
             </div>
         )

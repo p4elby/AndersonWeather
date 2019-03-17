@@ -60,17 +60,26 @@ export default class SearchAndAnalyze extends React.Component{
         if (this.state.check === "show")
         return (
             <div style={{marginTop: '3%'}}>
-                <h6><span>{this.state.cityName} : {this.state.date}</span></h6>
-                <h6><span>Visibility : </span>{this.state.visibility}</h6>
-                <h6><span>Wind : </span>{this.state.wind}</h6>
-                <h6><span>Temp : </span>{this.state.temp}</h6>
-                <h6><span>Humidity : </span>{this.state.humidity}</h6>
-                <h6><span>Pressure : </span>{this.state.pressure}</h6>
-                <h6><span>Precipitation : </span>{this.state.precipitation}</h6>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>{this.state.cityName}</th>
+                        <th>{this.state.date}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr><td><span>Visibility : </span>{this.state.visibility}</td></tr>
+                    <tr><td><span>Wind : </span>{this.state.wind}</td></tr>
+                    <tr><td><span>Temp : </span>{this.state.temp}</td></tr>
+                    <tr><td><span>Humidity : </span>{this.state.humidity}</td></tr>
+                    <tr><td><span>Pressure : </span>{this.state.pressure}</td></tr>
+                    <tr><td><span>Precipitation : </span>{this.state.precipitation}</td></tr>
+                    </tbody>
+                </table>
                 <PopUp trigger={<button className = "btn btn-primary" > Analyze</button>} modal>{close =>(
-                    <div>
+                    <div style={{color: 'black'}}>
                         {this.state.analyzeData}<br/>
-                        <button className = "btn btn-danger"  style={{marginLeft: '42%'}} onClick = {close}>Close</button>
+                        <button className = "btn btn-danger"  style={{marginLeft: '42%', marginTop: '1%'}} onClick = {close}>Close</button>
                     </div>
                 )}
                 </PopUp>

@@ -23,7 +23,6 @@ import java.util.Random;
 public class RandomDataController {
     @PostMapping("/generate")
     public String randomForecast(@RequestBody String data){
-        System.out.println(data);
         Visibility[] allVis = Visibility.values();
         Wind[] allWind = Wind.values();
         Random random = new Random();
@@ -36,7 +35,7 @@ public class RandomDataController {
         int pressure = random.nextInt(1000) ;
         int precipitation =random.nextInt(100);
         String url = "http://localhost:8300/api/db-service/db/forecast/site";
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new StringBuilder("");
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(url);
         try {
@@ -52,22 +51,17 @@ public class RandomDataController {
             urlParameters.add(new BasicNameValuePair("pressure",Integer.toString(pressure)));
             urlParameters.add(new BasicNameValuePair("precipitation",Integer.toString(precipitation)));
             urlParameters.add(new BasicNameValuePair("date",date));
-            System.out.println(urlParameters);
             post.setEntity(new UrlEncodedFormEntity(urlParameters));
             HttpResponse response = client.execute(post);
             BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-            String line = "";
+            String line;
             while ((line = rd.readLine()) != null) {
                 result.append(line);
+                System.out.println("line"+ line);
             }
         }catch (Exception e){
             System.out.println(e);
         }
         return result.toString();
     }
-    @PostMapping("/hello")
-    public String hello(@RequestBody String data){
-        return data;
-    }
-
 }

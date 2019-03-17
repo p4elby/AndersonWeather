@@ -2,12 +2,14 @@ package com.dbService.controller;
 
 import com.dbService.entity.Forecast;
 import com.dbService.repositories.ForecastRepository;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/db")
@@ -28,7 +30,7 @@ public class DbServiceController {
     }
 
     @PostMapping("/forecast/site")
-    public Forecast newForecasts(@RequestBody String data){
+    public String newForecasts(@RequestBody String data){
         System.out.println(data);
         String[] splitData = data.split("&");
         System.out.println(splitData[7]);
@@ -41,12 +43,25 @@ public class DbServiceController {
         int pressure = Integer.parseInt(splitData[5].split("=")[1]);
         int precipitation = Integer.parseInt(splitData[6].split("=")[1]);
         Date date = new Date();
+        String result = "Yes";
         try {
             date =  new SimpleDateFormat("yyyy-MM-dd").parse(splitData[7].split("=")[1]);
+            Iterable<Forecast> allForecast = forecastRepository.findAll();
+            for (Forecast forecast : allForecast) {
+                if ((city.toLowerCase()).equals(forecast.getForecast_city().toLowerCase()) && date.toString().equals((new SimpleDateFormat("yyyy-MM-dd").parse(forecast.getDate().toString()).toString()))){
+                    result = "No";
+
+                }
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return forecastRepository.save(new Forecast(city, visibility, wind, temperature, humidity, pressure, precipitation, date));
+        if (result.equals("Yes")) {
+//          Я увеличиваю день на 1 , тк по неизвестной мне причине при добавлении прогноза в бд (Mysql) он добавляется предыдущим днем
+            date = DateUtils.addDays(date,1);
+            forecastRepository.save(new Forecast(city, visibility, wind, temperature, humidity, pressure, precipitation, date));
+        }
+        return result;
     }
 }
 

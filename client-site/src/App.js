@@ -5,7 +5,7 @@ import GenerateForecast from './modules/GenerateForecast'
 class App extends Component {
   render() {
     return (
-     <div className ="container">
+     <div className ="container" style={{marginTop: '4%',color: 'white'}}>
          <div className="row">
              <div className="col-sm">
                  <label>Search </label><SearchAndAnalyze/>

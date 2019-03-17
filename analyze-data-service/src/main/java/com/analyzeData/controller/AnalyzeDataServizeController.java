@@ -24,12 +24,17 @@ public class AnalyzeDataServizeController {
             }else
                 result += "Shorts with a t-shirt";
 
-            if (precipitation < 20){
+            if (precipitation < 20 && temperature > 0){
                 result += ",the probability of rain is small! so you should can not take an umbrella";
-            } else if (precipitation <50 ){
-                result += ",the probability of rain is 50%! so rely on your luck and decide whether or not to take an umbrella";
             } else
-                result += ",take an umbrella with you";
+                if (precipitation <50 && temperature > 0){
+                    result += ",the probability of rain is 50%! so rely on your luck and decide whether or not to take an umbrella";
+                } else
+                    if ( temperature > 0) {
+                        result += ",take an umbrella with you";
+                    }else
+                        result += ",the likelihood of snowing is high";
+
 
             if ("Calm".equals(wind) || "Quiet".equals(wind)) {
                 result += ",will be windless";
