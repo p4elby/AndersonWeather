@@ -21,3 +21,4 @@
 * in browser open localhost:3000
 
 # do not judge strictly this is my first spring project :)
+# if you have any questions, write either in Skype (p4elka1997by) or in telegram (https://t.me/P4elby)
